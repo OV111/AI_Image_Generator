@@ -26,16 +26,37 @@ body {
     margin: 150px 370px;
     animation: backgroundAnimation 5s linear infinite;
 }
-.logo {
-    display: grid;
-    justify-content: start;
-    align-items: start;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
 }
-h1 {
-    font-size: 34px;
+.header .logo {
+    font-size: 24px;
+    background-color: #5C5A87;
+    padding: 4px;
+    border-radius: 8px;
+}
+.header h1 {
+    font-size: 36px;
     font-weight: 600;
     color: var(--text-color);
-
+}
+.header .light-dark {
+    /* background-color: #5C5A87; */
+}
+.theme-toggle {
+    font-size: 24px;
+    border: none;
+    background-color: #5C5A87;
+    border-radius: 8px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+.theme-toggle:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 @keyframes backgroundAnimation {
     0% {
