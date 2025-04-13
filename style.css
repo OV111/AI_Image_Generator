@@ -31,10 +31,11 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+    margin-top: 12px;
 }
 .header .logo {
     font-size: 24px;
-    background-color: #5C5A87;
+    background-color: #7370a2;
     padding: 4px;
     border-radius: 8px;
 }
@@ -44,13 +45,10 @@ body {
     color: var(--text-color);
     text-shadow: 0 0 8px #C8C7FF;
 }
-.header .light-dark {
-    /* background-color: #5C5A87; */
-}
 .theme-toggle {
     font-size: 24px;
     border: none;
-    background-color: #5C5A87;
+    background-color: #7370a2;
     border-radius: 8px;
     padding: 4px 8px;
     cursor: pointer;
@@ -59,12 +57,11 @@ body {
     transform: scale(1.05);
     transition: 0.3s;
 }
-
 .text-area {
     width: 100%;
     height: 130px;
     margin-bottom: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 15px 20px;
     border: 1px solid #5C5A87;
     background-color: var(--input-color);
@@ -80,7 +77,60 @@ body {
     box-shadow: 0 0 5px 2px #C8C7FF;
     transition: 0.3s;
 }
+.prompt-btn {
+    position: absolute;
+    right: 490px;
+    top: 340px;
+    
+    padding: 4px 6px 6px 4px;
+    border: none;
+    border-radius: 50%;
+    
+    font-size: 22px;
+    background-color: #7370a2;
 
+    resize: vertical;
+    cursor: pointer;
+}
+.prompt-btn:hover {
+    transform: scale(1.05);
+    transition: ease-in 0.3s;
+}
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.custom-select {
+    font-size: 16px;
+    padding: 4px;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 6px;
+    font-family: "Inter", sans-serif;
+    text-shadow: 0 0 6px #C8C7FF;
+    color: var(--text-color);
+    background-color: #7875aa;
+    animation: backgroundAnimation 5s linear infinite;
+    cursor: pointer;
+}
+.options:hover {
+    outline: none;
+}
+.generateBtn {
+    font-size: 16px;
+    padding: 4px;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 6px;
+    font-family: "Inter", sans-serif;
+    text-shadow: 0 0 6px #C8C7FF;
+    color: var(--text-color);
+    background-color: #7875aa;
+    animation: backgroundAnimation 5s linear infinite;
+    cursor: pointer;
+}
 
 
 
@@ -91,12 +141,12 @@ body {
 
 @keyframes backgroundAnimation {
     0% {
-        box-shadow: 0 0 20px 5px #C8C7FF;
+        box-shadow: 0 0 20px 6px #C8C7FF;
     }
     50% {
-        box-shadow: 0 0 20px 5px #E9E9FF;
+        box-shadow: 0 0 20px 6px #E9E9FF;
     }
     100% {
-        box-shadow: 0 0 20px 5px #C8C7FF;
+        box-shadow: 0 0 20px 6px #C8C7FF;
     }
 }
