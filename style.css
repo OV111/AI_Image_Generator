@@ -20,10 +20,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 350px;
-    width: 700px;
+    width: 650px;
     background:var(--background-color);
     border-radius: 32px;
-    margin: 150px 370px;
+    margin: 150px 390px;
     animation: backgroundAnimation 5s linear infinite;
 }
 .header {
@@ -42,6 +42,7 @@ body {
     font-size: 36px;
     font-weight: 600;
     color: var(--text-color);
+    text-shadow: 0 0 8px #C8C7FF;
 }
 .header .light-dark {
     /* background-color: #5C5A87; */
@@ -58,6 +59,36 @@ body {
     transform: scale(1.05);
     transition: 0.3s;
 }
+
+.text-area {
+    width: 100%;
+    height: 130px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    padding: 15px 20px;
+    border: 1px solid #5C5A87;
+    background-color: var(--input-color);
+    color: var(--text-color);
+    animation: backgroundAnimation 5s linear infinite;
+}
+.text-area::placeholder {           
+    font-size: 16px;                                                                    
+    color: var(--placeholder-color);
+}
+.text-area:hover {
+    outline: none;
+    box-shadow: 0 0 5px 2px #C8C7FF;
+    transition: 0.3s;
+}
+
+
+
+
+
+
+
+
+
 @keyframes backgroundAnimation {
     0% {
         box-shadow: 0 0 20px 5px #C8C7FF;
