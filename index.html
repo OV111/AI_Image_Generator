@@ -10,33 +10,39 @@
 <body>
     <main class="main-content">
         <section class="header">
-            <div class="logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-            <h1>AI Image Generator</h1>
+            <div class="logo-container">
+                <div class="logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h1>AI Image Generator</h1>
+            </div>
             <div class="light-dark">
                 <button class="theme-toggle"><i class="fa-solid fa-moon"></i></button>
             </div>
         </section>
         <div>
-            <textarea name="" class="text-area" placeholder="Describe Your Imagination in detail..." id="textInput"></textarea>
+            <textarea name="" class="text-area" placeholder="Describe Your imagination in detail..." id="textInput"></textarea>
             <button class="prompt-btn"><i class="fa-solid fa-dice"></i></button>
         </div>
         <section class="options">
-            <select name="custom-select" id="">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-            </select>
-            <select name="custom-select" id="">
-                <option value=""></option>
+            <select name="prompt-actions" class="custom-select" id="selectModel" required>
+                <option value="">Select Model</option>
                 <option value=""></option>
                 <option value=""></option>
             </select>
-            <select name="custom-select" id="">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+            <select name="prompt-actions" class="custom-select" id="imageCount" required>
+                <option value="">Image Count</option>
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+                <option value="">4</option>
             </select>
-            <button class="generateBtn">Generate</button>
+            <select name="prompt-actions" class="custom-select" id="aspectRatio" required>
+                <option value="">Aspect Ratio</option>
+                <option value="">Square (1:1)</option>
+                <option value="">Landscape (16:9)</option>
+                <option value="">Portrait (9:16)</option>
+            </select>
+            <button class="generateBtn">
+                <i class="fa-solid fa-wand-sparkles"></i> Generate</button>
         </section>
     </main>
     <script src="script.js"></script>
