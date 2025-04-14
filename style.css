@@ -14,7 +14,14 @@
 }
 body {
     background: linear-gradient(90deg, #E9E9FF,#C8C7FF);
+    /* background-color: white; */
+    /* color: black; */
+    /* transition: background-color 0.3s, color 0.3s; */
 }
+/* body.dark-mode {
+    background-color: #121212;
+    color: white;
+} */
 .main-content {
     display: grid;
     justify-content: center;
@@ -22,7 +29,7 @@ body {
     height: 350px;
     width: 650px;
     animation: backgroundAnimation 5s linear infinite;
-    margin: 150px 390px;
+    margin: 100px 390px;
     border-radius: 32px;
     background:var(--background-color);
 }
@@ -91,8 +98,8 @@ body {
 }
 .prompt-btn {
     position: absolute;
-    right: 470px;
-    top: 340px;
+    right: 460px;
+    top: 295px;
     
     padding: 4px 6px 6px 4px;
     border: none;
@@ -156,6 +163,19 @@ body {
     transition: 0.3s;
     background-color: #5a52e0;
 }
+.gallery-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-card img {
+    width: 125px;
+    height: 125px;
+}
+
+
+
 @keyframes backgroundAnimation {
     0% {
         box-shadow: 0 0 20px 6px #C8C7FF;
