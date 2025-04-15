@@ -178,15 +178,17 @@ body {
     border: 1px solid #5C5A87;
     outline: none;
 }
-.image-card:not(.loading):hover {
+.image-card:not(.loading, .error):hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.image-card.loading :is(.result-img,.img-overlay) {
+.image-card:not(.loading, .error) :is(.result-img,.img-overlay) {   /*! This is Initial */
     filter: blur(5px);
     pointer-events: none;
+    /* display: none; */
 }
+
 
 .result-img {
     width: 100%;
@@ -226,9 +228,9 @@ body {
     flex-direction: column;
     align-items: center;
 }
-.gallery-grid .image-card.loading .status-container {
+.gallery-grid .image-card.loading:where(.loading, .error).status-container {
     display: flex;
-    
+
 } 
 .status-container .spinner {
     width: 35px;
