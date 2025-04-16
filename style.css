@@ -18,9 +18,14 @@ body {
     /* color: black; */
     /* transition: background-color 0.3s, color 0.3s; */
 }
-/* body.dark-mode {
-    background-color: #121212;
-    color: white;
+/* body.dark-theme {
+    --color-card: #1E293B;
+    --color-input: #141B2D;
+    --color-text: #F3F4F6;
+    --color-placeholder: #A3B6DC;
+    --color-border: #334155;
+    background: var(--color-card);
+    background-image: radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 35%), radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 35%), radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
 } */
 .main-content {
     display: grid;
@@ -169,6 +174,8 @@ body {
     align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 }
+
+/* Result */
 .image-card {
     position: relative;
     overflow: hidden;
@@ -177,24 +184,94 @@ body {
     background: var(--input-color);
     border: 1px solid #5C5A87;
     outline: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .image-card:not(.loading, .error):hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
-
-.image-card:not(.loading, .error) :is(.result-img,.img-overlay) {   /*! This is Initial */
+.image-card:not(.loading, .error) .result-img {
     filter: blur(5px);
-    pointer-events: none;
-    /* display: none; */
+}
+.image-card:not(.loading, .error) .img-overlay {
+    display: none;
+}
+.image-card:not(.loading, .error) .result-img.loaded {
+       filter: none;
+}
+.image-card:not(.loading, .error) .result-img.loaded + .img-overlay {
+    display: flex;
 }
 
+/* Loading state */
+.image-card.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.image-card.loading .status-container {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    padding: 50px 20px;
+    gap: 13px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-card.loading .result-img,
+.image-card.loading .img-overlay {
+    opacity: 0.5;
+    filter: blur(2px);
+}
+
+/* Error state */
+.image-card.error {
+    border-color: #ff4d4f;
+}
+
+.image-card.error::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 77, 79, 0.1);
+    z-index: 1;
+}
+
+.image-card.error .status-container {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    padding: 50px 20px;
+    gap: 13px;
+    flex-direction: column;
+    align-items: center;
+    color: #ff4d4f;
+}
+
+.image-card.error .fa-triangle-exclamation {
+    color: #ff4d4f;
+    font-size: 2rem;
+}
+
+.image-card.error .result-img,
+.image-card.error .img-overlay {
+    opacity: 0.3;
+}
+
+/* Common styles */
 .result-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: filter 0.3s ease, opacity 0.3s ease;
 }
+
 .img-overlay {
     position: absolute;
     bottom: 0;
@@ -204,7 +281,9 @@ body {
     display: flex;
     justify-content: flex-end;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));   
+    transition: opacity 0.3s ease;
 }
+
 .img-overlay .img-download-btn {
     height: 45px;
     width: 45px;
@@ -216,22 +295,26 @@ body {
     background: rgba(255,255,255,0.25);
     transition: all 0.3s ease;
 }
+
 .img-overlay .img-download-btn:hover {
     transform: scale(1.05);
     background: rgba(255,255,255,0.4);
 }
+
 /* Status container */
 .status-container {
-    display: none;
-    padding: 50px 20px;
-    gap: 13px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    z-index: 2;
 }
-.gallery-grid .image-card.loading:where(.loading, .error).status-container {
-    display: flex;
 
-} 
 .status-container .spinner {
     width: 35px;
     height: 35px;
@@ -240,25 +323,31 @@ body {
     border-top-color: #7370a2; 
     animation: spin 1s linear infinite;
 }
+
 .status-container .status-text {
     font-size: 18px;
-    color: var(--text-color);
     text-align: center;
     text-shadow: 0 0 6px #C8C7FF;
 }
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+.image-card.error {
+    border-color: #ff4d4f;
+}
+.image-card.error .status-container {
+    color: #ff4d4f;
+}
+.image-card.error .result-img {
+    opacity: 0.3;
 }
 
+.image-card.loading .result-img {
+    filter: blur(2px);
+    opacity: 0.5;
+}
 
-
-
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
 
 
 
