@@ -57,8 +57,7 @@ const propmtExamples = [
 
 promptBtn.addEventListener("click", () => {
     let example = propmtExamples[Math.floor(Math.random() * propmtExamples.length)];
-    console.log(example)
-    textArea.value = example
+    textArea.value = example;
 });
 
 darkModeBtn.addEventListener("click", () => {
