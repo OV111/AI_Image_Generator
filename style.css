@@ -74,13 +74,13 @@ body.dark-theme .main-content {
     border: none;
     border-radius: 8px;
     font-size: 24px;
-    background-color: #7370a2;
+    background-color: rgb(207, 205, 205);
     cursor: pointer;
 }
 .theme-toggle:hover {
     transform: scale(1.05);
     transition: 0.3s;
-    background-color: rgb(207, 205, 205);
+    /* background-color: #7370a2; */
 }
 /* Text Area */
 .text-area {
@@ -106,7 +106,7 @@ body.dark-theme .main-content {
 .prompt-btn {
     position: absolute;
     right: 460px;
-    top: 295px;
+    top: 320px;
     
     padding: 4px 6px 6px 4px;
     border: none;
@@ -145,6 +145,9 @@ body.dark-theme .main-content {
     color: var(--text-color);
     box-shadow: 0 0 5px 2px #C8C7FF;
     /* animation: backgroundAnimation 2s linear infinite; */
+}
+#selectModel {
+    width: 130px;
 }
 .options .custom-select:hover {
     outline: none;
@@ -187,10 +190,8 @@ body.dark-theme .main-content {
     background: var(--input-color);
     border: 1px solid #5C5A87;
     outline: none;
-    
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .image-card:not(.loading, .error):hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -348,13 +349,10 @@ body.dark-theme .main-content {
     filter: blur(2px);
     opacity: 0.5;
 }
-
+/* Media Queries Animations */
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
-
-
-
 @keyframes backgroundAnimation {
     0% {
         box-shadow: 0 0 20px 6px #C8C7FF;
