@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="">  
     <main class="main-content">
         <section class="header">
             <div class="logo-container">
@@ -25,8 +25,13 @@
         <section class="options">
             <select name="prompt-actions" class="custom-select" id="selectModel" required>
                 <option value="">Select Model</option>
-                <option value=""></option>
-                <option value=""></option>
+                <option value="">HiDream-ai/HiDream-I1-Full</option>
+                <option value="">black-forest-labs/FLUX.1-dev</option>
+                <option value="">Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro-2.0</option>
+                <option value="">openfree/flux-chatgpt-ghibli-lora</option>
+                <option value="">fumeisama/drawatoon-v1</option>
+                <option value="">CompVis/stable-diffusion-v1-4</option>
+                <option value="">alimama-creative/FLUX.1-Turbo-Alpha</option>
             </select>
             <select name="prompt-actions" class="custom-select" id="imageCount" required>
                 <option value="">Image Count</option>
@@ -46,9 +51,10 @@
         </section>
 
         <section class="gallery-grid">
-            <div class="image-card">
+            <div class="image-card loading">
                 <div class="status-container">
                     <div class="spinner"></div>
+                    <!-- <i class="fa-solid fa-triangle-exclamation"></i> -->
                     <p class="status-text">Generating...</p>
                 </div>
                 <img src="test.png" alt="generatedImage" class="result-img">
@@ -57,21 +63,36 @@
                 </div>
             </div>
 
-            <div class="image-card">
+            <div class="image-card error">
+                <div class="status-container">
+                    <!-- <div class="spinner"></div> -->
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <p class="status-text">Error...</p>
+                </div>
                 <img src="test.png" alt="generatedImage" class="result-img">
                 <div class="img-overlay">
                     <button class="img-download-btn"><i class="fa-solid fa-download"></i></button>
                 </div>
             </div>
 
-            <div class="image-card">
+            <div class="image-card loading">
+                <div class="status-container">
+                    <div class="spinner"></div>
+                    <!-- <i class="fa-solid fa-triangle-exclamation"></i> -->
+                    <p class="status-text">Generating...</p>
+                </div>
                 <img src="test.png" alt="generatedImage" class="result-img">
                 <div class="img-overlay">
                     <button class="img-download-btn"><i class="fa-solid fa-download"></i></button>
                 </div>
             </div>
 
-            <div class="image-card">
+            <div class="image-card error">
+                <div class="status-container">
+                    <!-- <div class="spinner"></div> -->
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <p class="status-text">Error...</p>
+                </div>
                 <img src="test.png" alt="generatedImage" class="result-img">
                 <div class="img-overlay">
                     <button class="img-download-btn"><i class="fa-solid fa-download"></i></button>
