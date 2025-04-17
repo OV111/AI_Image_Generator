@@ -54,7 +54,6 @@ const propmtExamples = [
   "A moonlit field full of bioluminescent mushrooms and foxes:",
 ];
 
-
 promptBtn.addEventListener("click", () => {
     let example = propmtExamples[Math.floor(Math.random() * propmtExamples.length)];
     textArea.value = example;
@@ -66,3 +65,28 @@ darkModeBtn.addEventListener("click", () => {
     themeToggle.style.backgroundColor = isDarkTheme ? "#7370a2":  "rgb(207, 205, 205)"; 
     // localStorage.setItem("theme", isDarkTheme ? "dark":"light");
 });
+
+
+
+
+
+
+const  generateImages =  async (selectModel) => {
+  const modelURL = `https://router.huggingface.co/replicate/v1/models${selectModel}`;
+  const x = await fetch(modelURL);
+  console.log(x)
+}
+
+generateImages();
+
+
+
+
+
+const getPromptValue = () => {
+
+};
+
+const getSelectOption = () => {
+
+};
