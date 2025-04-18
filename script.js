@@ -68,25 +68,57 @@ darkModeBtn.addEventListener("click", () => {
 
 
 
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 
 
-const  generateImages =  async (selectModel) => {
-  const modelURL = `https://router.huggingface.co/replicate/v1/models${selectModel}`;
-  const x = await fetch(modelURL);
-  console.log(x)
+const  generateImages =  async (selectModel,imageCount,aspectRatio,promptText) => {
+  const MODEL_URL = `https://router.huggingface.co/hf-inference/models/${selectModel}`
+  
+
+  try {
+    const response = await fetch(MODEL_URL);
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+
+
+  async function query(data) {
+    const response = await fetch(
+      "https://router.huggingface.co/fal-ai/fal-ai/hidream-i1-full",
+      {
+        headers: {
+          Authorization: "Bearer hf_xxxxxxxxxxxxxxxxxxxxxxxx",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await response.blob();
+    return result;
+  }
+  query({     sync_mode: true,
+      prompt: "\"Astronaut riding a horse\"", })
+    .then((response) => {
+      // Use image
+      console.log(response)
+  });
+};
+
+generateImages(selectModel.options[1].text);
+console.log(selectModel.options[1].text)
+
+
+
+
+const createImages = (selectModel,imageCount,aspectRatio,promptText) => {
+
 }
-
-generateImages();
-
-
-
-
-
 const getPromptValue = () => {
 
 };
-
 const getSelectOption = () => {
 
 };
