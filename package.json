@@ -1,0 +1,21 @@
+{
+  "name": "ai-image-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OV111/AI_Image_Generator.git"
+  },
+  "keywords": [],
+  "author": "Vahe Ohanyan",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/OV111/AI_Image_Generator/issues"
+  },
+  "homepage": "https://github.com/OV111/AI_Image_Generator#readme"
+}
