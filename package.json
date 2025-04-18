@@ -1,21 +1,21 @@
 {
   "name": "ai-image-generator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "script.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OV111/AI_Image_Generator.git"
-  },
-  "keywords": [],
-  "author": "Vahe Ohanyan",
-  "license": "ISC",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/OV111/AI_Image_Generator/issues"
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
   },
-  "homepage": "https://github.com/OV111/AI_Image_Generator#readme"
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.2",
+    "@vue/tsconfig": "^0.7.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.3.1",
+    "vue-tsc": "^2.2.8"
+  }
 }
