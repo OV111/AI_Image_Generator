@@ -1,3 +1,5 @@
+// const { isQuestionOrPlusOrMinusToken } = require("typescript");
+
 const darkModeBtn = document.getElementById("darkmode");
 const themeToggle = document.querySelector(".theme-toggle");
 
@@ -74,41 +76,31 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 const  generateImages =  async (selectModel,imageCount,aspectRatio,promptText) => {
   const MODEL_URL = `https://router.huggingface.co/hf-inference/models/${selectModel}`
-  
-
+  getImageD
   try {
-    const response = await fetch(MODEL_URL);
-    console.log(response);
+    const response = await fetch(MODEL_URL, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        "Content-Type": "application/json",
+        "x-use-cache": "false",
+      },
+      method: "POST",
+			body: JSON.stringify({
+        inputs: promptText,
+        parameters: {width,height},
+        options: {wait_for_model:true,user_cache: false},
+      }
+      ),
+    });
+    const result = await response.json();
+    console.log(result);
   } catch (error) {
     console.log(error);
   }
-
-
-  async function query(data) {
-    const response = await fetch(
-      "https://router.huggingface.co/fal-ai/fal-ai/hidream-i1-full",
-      {
-        headers: {
-          Authorization: "Bearer hf_xxxxxxxxxxxxxxxxxxxxxxxx",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(data),
-      }
-    );
-    const result = await response.blob();
-    return result;
-  }
-  query({     sync_mode: true,
-      prompt: "\"Astronaut riding a horse\"", })
-    .then((response) => {
-      // Use image
-      console.log(response)
-  });
 };
 
 generateImages(selectModel.options[1].text);
-console.log(selectModel.options[1].text)
+// console.log(selectModel.options[1].text)
 
 
 
