@@ -72,11 +72,21 @@ darkModeBtn.addEventListener("click", () => {
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
+const getImageDimensions = (aspectRatio,baseSize = 512) => {
+  const [width,height] = aspectRatio.split("/").map(Number);
+  const scaleFactor = baseSize / Math.sqrt(width,height);
 
+  let calculateWidth = Math.round(width * scaleFactor);
+  let calculateHeight = Math.round(height * scaleFactor);
+
+  calculateWidth = Math.floor(calculateWidth / 16) * 16;
+  calculateHeight = Math.floor(calculateHeight / 16) * 16;
+  return {width: calculateWidth,height:calculateHeight};
+}
 
 const  generateImages =  async (selectModel,imageCount,aspectRatio,promptText) => {
   const MODEL_URL = `https://router.huggingface.co/hf-inference/models/${selectModel}`
-  getImageD
+  const {width,height} = getImageDimensions(aspectRatio);
   try {
     const response = await fetch(MODEL_URL, {
       headers: {
