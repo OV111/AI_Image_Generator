@@ -72,35 +72,35 @@ darkModeBtn.addEventListener("click", () => {
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-const getImageDimensions = (aspectRatio,baseSize = 512) => {
-  const [width,height] = aspectRatio.split("/").map(Number);
-  const scaleFactor = baseSize / Math.sqrt(width,height);
+// const getImageDimensions = (aspectRatio,baseSize = 512) => {
+//   const [width,height] = aspectRatio.split("/").map(Number);
+//   const scaleFactor = baseSize / Math.sqrt(width,height);
 
-  let calculateWidth = Math.round(width * scaleFactor);
-  let calculateHeight = Math.round(height * scaleFactor);
+//   let calculateWidth = Math.round(width * scaleFactor);
+//   let calculateHeight = Math.round(height * scaleFactor);
 
-  calculateWidth = Math.floor(calculateWidth / 16) * 16;
-  calculateHeight = Math.floor(calculateHeight / 16) * 16;
-  return {width: calculateWidth,height:calculateHeight};
-}
+//   calculateWidth = Math.floor(calculateWidth / 16) * 16;
+//   calculateHeight = Math.floor(calculateHeight / 16) * 16;
+//   return {width: calculateWidth,height:calculateHeight};
+// }
 
 const  generateImages =  async (selectModel,imageCount,aspectRatio,promptText) => {
-  const MODEL_URL = `https://router.huggingface.co/hf-inference/models/${selectModel}`
-  const {width,height} = getImageDimensions(aspectRatio);
+  const MODEL_URL = `https://api.openai.com/v1/images/generations`
+  // const {width,height} = getImageDimensions(aspectRatio);
   try {
     const response = await fetch(MODEL_URL, {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-        "Content-Type": "application/json",
-        "x-use-cache": "false",
-      },
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: 
+        `Bearer ${API_KEY}`,
+        "User-Agent": "Chrome",
+      },
 			body: JSON.stringify({
-        inputs: promptText,
-        parameters: {width,height},
-        options: {wait_for_model:true,user_cache: false},
-      }
-      ),
+        prompt: `${textArea}`,
+        n: 1,
+        size: "512x512",
+      }),
     });
     const result = await response.json();
     console.log(result);
@@ -109,15 +109,12 @@ const  generateImages =  async (selectModel,imageCount,aspectRatio,promptText) =
   }
 };
 
-generateImages(selectModel.options[1].text);
+generateBtn.addEventListener("click", generateImages);
+
 // console.log(selectModel.options[1].text)
 
 
 
-
-const createImages = (selectModel,imageCount,aspectRatio,promptText) => {
-
-}
 const getPromptValue = () => {
 
 };
