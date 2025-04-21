@@ -84,11 +84,13 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 //   return {width: calculateWidth,height:calculateHeight};
 // }
 
+
 const  generateImages =  async (selectModel,imageCount,aspectRatio,promptText) => {
-  const MODEL_URL = `https://api.openai.com/v1/images/generations`
+  const MODEL_URL = "https://api.openai.com/v1/images/generations";
   // const {width,height} = getImageDimensions(aspectRatio);
+  console.log(MODEL_URL)
   try {
-    const response = await fetch(MODEL_URL, {
+    const response = await fetch("https://api.openai.com/v1/images/generations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,13 +99,14 @@ const  generateImages =  async (selectModel,imageCount,aspectRatio,promptText) =
         "User-Agent": "Chrome",
       },
 			body: JSON.stringify({
-        prompt: `${textArea}`,
+        prompt: `${textArea.value}`,
         n: 1,
         size: "512x512",
       }),
     });
-    const result = await response.json();
-    console.log(result);
+    console.log(response)
+    const data = await response.json();
+    console.log(data);
   } catch (error) {
     console.log(error);
   }
